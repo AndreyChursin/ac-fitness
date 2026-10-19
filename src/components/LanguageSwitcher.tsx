@@ -37,12 +37,12 @@ export function LanguageSwitcher({
 }) {
   const pathname = usePathname();
   return (
-    <details className={styles.languageMenu}>
+    <details className="language-menu">
       <summary aria-label={labels.chooseLanguage} title={labels.language}>
         <GlobeIcon />
-        <span className={styles.languageCurrent}>{locale.toUpperCase()}</span>
+        <span className="language-current">{locale.toUpperCase()}</span>
         <svg
-          className={styles.languageChevron}
+          className="language-chevron"
           viewBox="0 0 16 16"
           width="12"
           height="12"
@@ -58,7 +58,7 @@ export function LanguageSwitcher({
           />
         </svg>
       </summary>
-      <div className={styles.languageOptions}>
+      <div className="language-options">
         {locales.map((language) => (
           <a
             key={language}
