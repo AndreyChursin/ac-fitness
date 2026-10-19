@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import "../globals.css";
 export const metadata: Metadata = {
@@ -5,5 +6,5 @@ export const metadata: Metadata = {
   description: "Личное наставничество по тренировочным привычкам, дисциплине и основам питания.",
 };
 export default function RussianLayout({ children }: Readonly<{children: React.ReactNode}>) {
-  return <html lang="ru"><body>{children}</body></html>;
+  return <html lang="ru"><body>{children}<Analytics /></body></html>;
 }
