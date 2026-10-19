@@ -80,3 +80,5 @@ html{scroll-padding-top:100px}
 @media(prefers-reduced-motion:reduce){
   .site-header,.site-header .logo{transition:none}
 }
+
+.usdt-price{margin-top:4px;color:var(--muted);font-size:14px;font-weight:500;letter-spacing:0}

@@ -77,6 +77,9 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
                 <div className="price">
                   {formatPrice(plans[i].price, locale)}{" "}
                   <small>{plan.unit}</small>
+                  <div className="usdt-price">
+                    {lang.services.usdtLabel}: {plans[i].usdtPrice} USDT
+                  </div>
                 </div>
                 <ul>
                   {plan.items.map((item) => (
