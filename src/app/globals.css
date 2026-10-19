@@ -43,4 +43,16 @@
 @supports ((-webkit-backdrop-filter:blur(18px)) or (backdrop-filter:blur(18px))){.site-header{background:rgba(25,34,27,.58);-webkit-backdrop-filter:blur(22px) saturate(165%) brightness(1.1);backdrop-filter:blur(22px) saturate(165%) brightness(1.1)}}
 @media(prefers-reduced-transparency:reduce){.site-header{background:#1b241d;-webkit-backdrop-filter:none;backdrop-filter:none}}
 html{scroll-padding-top:100px}
-@media(max-width:600px){html{scroll-padding-top:78px}.site-header{border-radius:0 0 14px 14px}}
+@media(max-width:600px){
+  html{scroll-padding-top:78px}
+  .site-header{
+    width:calc(100% + 36px);
+    margin-left:-18px;
+    margin-right:-18px;
+    padding-left:18px;
+    padding-right:18px;
+    border-radius:0;
+    border-left:0;
+    border-right:0;
+  }
+}
