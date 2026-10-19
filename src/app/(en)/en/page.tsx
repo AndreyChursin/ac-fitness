@@ -1,5 +1,4 @@
 import { SiteHeader } from "../../../components/SiteHeader";
-import Link from "next/link";
 
 const copy = {
   "nav": [
