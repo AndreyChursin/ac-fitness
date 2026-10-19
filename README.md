@@ -30,7 +30,7 @@ anchor. Explicit language URLs always take precedence; browser language detectio
 is intentionally not enabled. The default applies only to `/`.
 
 Prices are numeric data in `src/i18n/plans.ts`. `Intl.NumberFormat` formats them
-for the selected locale; the currency remains RSD. Use `Intl.DateTimeFormat` with
+for the selected locale in EUR (€). Fixed USDT alternatives are 15, 30, and 60 USDT for the three plans respectively; they are not live exchange-rate conversions. Use `Intl.DateTimeFormat` with
 `intlLocales` from the locale config when adding dates.
 
 To add a language, register it in the locale config, add a dictionary and loader,
