@@ -1,3 +1,4 @@
+import styles from "../styles/Site.module.css";
 "use client";
 
 import { usePathname } from "next/navigation";
@@ -35,12 +36,12 @@ export function LanguageSwitcher({
 }) {
   const pathname = usePathname();
   return (
-    <details className="language-menu">
+    <details className={styles.languageMenu}>
       <summary aria-label={labels.chooseLanguage} title={labels.language}>
         <GlobeIcon />
-        <span className="language-current">{locale.toUpperCase()}</span>
+        <span className={styles.languageCurrent}>{locale.toUpperCase()}</span>
         <svg
-          className="language-chevron"
+          className={styles.languageChevron}
           viewBox="0 0 16 16"
           width="12"
           height="12"
@@ -56,7 +57,7 @@ export function LanguageSwitcher({
           />
         </svg>
       </summary>
-      <div className="language-options">
+      <div className={styles.languageOptions}>
         {locales.map((language) => (
           <a
             key={language}
