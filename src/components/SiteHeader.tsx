@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import type { Locale } from "@/i18n/config";
@@ -30,8 +33,17 @@ export function SiteHeader({
   contactUrl: string;
   messages: Messages;
 }) {
+  const [compact, setCompact] = useState(false);
+
+  useEffect(() => {
+    const update = () => setCompact(window.scrollY > 64);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
+
   return (
-    <header className="site-header">
+    <header className={compact ? "site-header site-header--compact" : "site-header"}>
       <Link
         className="logo"
         href={`/${locale}#top`}

@@ -1,5 +1,7 @@
 "use client";
 
+import styles from "../styles/Site.module.css";
+
 import { usePathname } from "next/navigation";
 import {
   languageNames,

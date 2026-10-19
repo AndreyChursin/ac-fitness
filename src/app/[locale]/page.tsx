@@ -108,7 +108,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
             <div className="quote">{lang.about.quote}</div>
           </div>
         </section>
-        <section id="faq" className="faq">
+        <section className="faq" id="faq">
           <div className="eyebrow">{lang.faq.eyebrow}</div>
           <h2>{lang.faq.title}</h2>
           {lang.faq.items.map(([q, a]) => (
