@@ -109,7 +109,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
             <div className={styles.quote}>{lang.about.quote}</div>
           </div>
         </section>
-        <section className={styles.section} id="faq" className={styles.faq}>
+        <section className={`${styles.section} ${styles.faq}`} id="faq">
           <div className={styles.eyebrow}>{lang.faq.eyebrow}</div>
           <h2 className={styles.headingTwo}>{lang.faq.title}</h2>
           {lang.faq.items.map(([q, a]) => (
