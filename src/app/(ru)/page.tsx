@@ -1,25 +1,11 @@
-import Link from "next/link";
+import { SiteHeader } from "../../components/SiteHeader";
 
-const contactUrl = process.env.NEXT_PUBLIC_CONTACT_URL || "https://github.com/AndreyChursin";
+const contactUrl = process.env.NEXT_PUBLIC_CONTACT_URL || "https://t.me/";
 
 export default function Home() {
   return (
     <div className="wrap">
-      <header>
-        <a className="logo" href="#top">
-          TRAIN<span>WITH</span>ANDREY.
-        </a>
-        <nav>
-          <a href="#approach">Подход</a>
-          <a href="#services">Форматы</a>
-          <a href="#about">Обо мне</a>
-          <a href="#faq">Вопросы</a>
-        </nav>
-        <div className="locale-switch"><span aria-current="page">RU</span><Link href="/en">EN</Link></div>
-        <a className="btn outline" href="#contact">
-          Связаться
-        </a>
-      </header>
+      <SiteHeader locale="ru" contactUrl={contactUrl} />
       <main id="top">
         <div className="hero">
           <div>
