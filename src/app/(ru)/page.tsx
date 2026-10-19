@@ -1,5 +1,4 @@
 import { SiteHeader } from "../../components/SiteHeader";
-import Link from "next/link";
 
 const contactUrl = process.env.NEXT_PUBLIC_CONTACT_URL || "https://t.me/";
 
