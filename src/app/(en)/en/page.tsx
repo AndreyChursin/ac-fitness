@@ -1,3 +1,4 @@
+import { SiteHeader } from "../../../components/SiteHeader";
 import Link from "next/link";
 
 const copy = {
@@ -126,22 +127,12 @@ const copy = {
   "footer": "Personal experience · No promises of quick results"
 };
 
-const contactUrl = process.env.NEXT_PUBLIC_CONTACT_URL || "https://github.com/AndreyChursin";
+const contactUrl = process.env.NEXT_PUBLIC_CONTACT_URL || "https://t.me/";
 
 export default function EnglishHome() {
   return (
     <div className="wrap">
-      <header>
-        <Link className="logo" href="/en#top">TRAIN<span>WITH</span>ANDREY.</Link>
-        <nav>
-          <a href="#approach">{copy.nav[0]}</a>
-          <a href="#services">{copy.nav[1]}</a>
-          <a href="#about">{copy.nav[2]}</a>
-          <a href="#faq">{copy.nav[3]}</a>
-        </nav>
-        <div className="locale-switch"><Link href="/">RU</Link><span aria-current="page">EN</span></div>
-        <a className="btn outline" href="#contact">{copy.nav[4]}</a>
-      </header>
+      <SiteHeader locale="en" contactUrl={contactUrl} />
       <main id="top">
         <div className="hero">
           <div>
