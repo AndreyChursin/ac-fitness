@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <div className="wrap">
@@ -11,6 +13,7 @@ export default function Home() {
           <a href="#about">Обо мне</a>
           <a href="#faq">Вопросы</a>
         </nav>
+        <div className="locale-switch"><span aria-current="page">RU</span><Link href="/en">EN</Link></div>
         <a className="btn outline" href="#contact">
           Связаться
         </a>
