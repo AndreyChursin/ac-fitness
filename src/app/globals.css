@@ -36,3 +36,17 @@
   .header-contact span{display:none}
 }
 @media(max-width:360px){.site-header .logo{font-size:13px}.header-actions{gap:0}}
+
+/* Keep the navigation visible while scrolling. */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(16,20,16,.96);
+  border-bottom:1px solid #30392e;
+}
+@supports (backdrop-filter:blur(12px)){
+  .site-header{backdrop-filter:blur(12px);background:rgba(16,20,16,.88)}
+}
+html{scroll-padding-top:100px}
+@media(max-width:600px){html{scroll-padding-top:78px}}
