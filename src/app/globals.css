@@ -56,3 +56,27 @@ html{scroll-padding-top:100px}
     border-right:0;
   }
 }
+
+/* Compact sticky header after scrolling; preserve all navigation controls. */
+.site-header{
+  transition:padding .22s ease,background-color .22s ease,box-shadow .22s ease;
+}
+.site-header .logo{
+  transition:font-size .22s ease;
+}
+.site-header--compact{
+  padding-top:12px;
+  padding-bottom:12px;
+}
+.site-header--compact .logo{font-size:19px}
+.site-header--compact .header-contact{padding-top:10px;padding-bottom:10px}
+@media(max-width:600px){
+  .site-header--compact{padding-top:7px;padding-bottom:7px}
+  .site-header--compact .logo{font-size:clamp(13px,3.8vw,17px)}
+  .site-header--compact .header-contact{
+    width:40px;height:40px;min-width:40px;padding:0;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .site-header,.site-header .logo{transition:none}
+}
