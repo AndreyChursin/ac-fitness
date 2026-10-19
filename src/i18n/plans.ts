@@ -1,16 +1,16 @@
 import { intlLocales, type Locale } from "./config";
 
 export const plans = [
-  { price: 800, featured: false },
-  { price: 1500, featured: true },
-  { price: 3000, featured: false },
+  { price: 15, usdtPrice: 15, featured: false },
+  { price: 29, usdtPrice: 30, featured: true },
+  { price: 59, usdtPrice: 60, featured: false },
 ] as const;
 
 export function formatPrice(price: number, locale: Locale) {
   return new Intl.NumberFormat(intlLocales[locale], {
     style: "currency",
-    currency: "RSD",
-    currencyDisplay: "code",
+    currency: "EUR",
+    currencyDisplay: "symbol",
     maximumFractionDigits: 0,
   }).format(price);
 }
