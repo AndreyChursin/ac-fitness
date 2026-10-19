@@ -1,3 +1,7 @@
+import Link from "next/link";
+
+const contactUrl = process.env.NEXT_PUBLIC_CONTACT_URL || "https://github.com/AndreyChursin";
+
 export default function Home() {
   return (
     <div className="wrap">
@@ -11,6 +15,7 @@ export default function Home() {
           <a href="#about">Обо мне</a>
           <a href="#faq">Вопросы</a>
         </nav>
+        <div className="locale-switch"><span aria-current="page">RU</span><Link href="/en">EN</Link></div>
         <a className="btn outline" href="#contact">
           Связаться
         </a>
@@ -222,12 +227,12 @@ export default function Home() {
             </p>
             <a
               className="btn"
-              href="mailto:hello@example.com?subject=Train%20With%20Andrey%20%E2%80%94%20%D0%BD%D0%B0%D1%81%D1%82%D0%B0%D0%B2%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE"
+              href={contactUrl}
             >
-              Написать Андрею →
+              Контакты на GitHub →
             </a>
             <p style={{ fontSize: 12, marginTop: 20 }}>
-              Контактный адрес демонстрационный — замените перед публикацией.
+              Для прямой связи добавьте адрес Telegram или email перед запуском.
             </p>
           </div>
         </section>
