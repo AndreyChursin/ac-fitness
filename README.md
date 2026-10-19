@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Train With Andrey
 
-## Getting Started
+Полная документация проекта: [`.docs/index.md`](.docs/index.md).
+Инструкции для агентов: [`AGENTS.md`](AGENTS.md).
 
-First, run the development server:
+Next.js App Router landing page with Russian and English localization.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
+## Development
+
+```sh
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `/ru` — Russian version.
+- `/en` — English version.
+- `/` — temporary redirect to the default locale (`ru`), preserving query parameters.
+- Unsupported locales (for example `/de`) return 404.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Localization
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`src/app/[locale]/page.tsx` contains the shared markup and
+`src/app/[locale]/layout.tsx` sets the HTML language and localized metadata.
+Translations live in `src/i18n/messages/{ru,en}.json`; keep their keys and array
+lengths identical. Include navigation labels, accessibility labels, and SEO text.
+`src/i18n/config.ts` defines supported locales and the default language.
 
-## Learn More
+The language switcher preserves the page path, query parameters, and section
+anchor. Explicit language URLs always take precedence; browser language detection
+is intentionally not enabled. The default applies only to `/`.
 
-To learn more about Next.js, take a look at the following resources:
+Prices are numeric data in `src/i18n/plans.ts`. `Intl.NumberFormat` formats them
+for the selected locale; the currency remains RSD. Use `Intl.DateTimeFormat` with
+`intlLocales` from the locale config when adding dates.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To add a language, register it in the locale config, add a dictionary and loader,
+update the translation check, and add the corresponding Open Graph locale.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Environment
 
-## Deploy on Vercel
+- `SITE_URL` — public origin, such as `https://your-domain.com`, for absolute
+  canonical, hreflang, and Open Graph URLs. On Vercel the production deployment
+  domain is used automatically if this is unset; locally it defaults to
+  `http://localhost:3000`. Set this before building for a custom production domain.
+- `NEXT_PUBLIC_CONTACT_URL` — contact URL (Telegram or email). If unset, the
+  existing `https://t.me/` placeholder and a setup note are displayed.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Validation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```sh
+pnpm check:i18n
+pnpm lint
+pnpm exec next typegen
+pnpm exec tsc --noEmit
+pnpm build
+```
+
+The build runs the translation check first. It rejects missing or unexpected
+keys, incomplete lists, and empty translations. TypeScript also checks both
+dictionaries against the shared message type.
