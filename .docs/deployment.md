@@ -52,9 +52,24 @@ pnpm start
 - Проверь целевой контакт из шапки и нижнего CTA.
 - Проверь наличие Analytics и его работу в целевом окружении; сам компонент
   в layout ещё не подтверждает поступление событий в dashboard.
+- Проверь, что в `src/app/[locale]/layout.tsx` подключён `<SpeedInsights />`,
+  а в настройках Vercel-проекта включён Speed Insights. После production-деплоя
+  открой страницы `/ru` и `/en`, выполни несколько переходов и проверь
+  поступление показателей в **Vercel → Speed Insights**. Данные могут появиться
+  с задержкой; наличие компонента само по себе не подтверждает сбор метрик.
+- Перед деплоем выполни `pnpm install --frozen-lockfile`: `package.json` и
+  `pnpm-lock.yaml` должны быть согласованы, включая `@vercel/speed-insights`.
 
 Приложение не публикуется автоматически при локальной сборке. Конфигурация
 конкретного Vercel-проекта и домена не хранится в этом репозитории.
+
+## Workflow для Speed Insights
+
+`.github/workflows/speed-insights-lockfile.yml` обновляет `pnpm-lock.yaml`
+в ветке `feature/vercel-speed-insights` при изменении самого workflow или
+ручном запуске. Он не заменяет проверку `pnpm install --frozen-lockfile`
+и не гарантирует успешную установку для коммита, в котором lockfile ещё не
+обновлён. В PR необходимо включать уже сгенерированный lockfile.
 
 ## Существующий GitHub workflow
 
