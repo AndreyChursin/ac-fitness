@@ -1,3 +1,4 @@
+import styles from "../styles/Site.module.css";
 import Link from "next/link";
 
 import type { Locale } from "@/i18n/config";
@@ -31,24 +32,24 @@ export function SiteHeader({
   messages: Messages;
 }) {
   return (
-    <header className="site-header">
+    <header className={styles.siteHeader}>
       <Link
-        className="logo"
+        className={styles.logo}
         href={`/${locale}#top`}
         aria-label={messages.header.home}
       >
         TRAIN<span>WITH</span>ANDREY
       </Link>
-      <nav className="site-nav" aria-label={messages.header.sections}>
+      <nav className={styles.siteNav} aria-label={messages.header.sections}>
         <a href="#approach">{messages.nav[0]}</a>
         <a href="#services">{messages.nav[1]}</a>
         <a href="#about">{messages.nav[2]}</a>
         <a href="#faq">{messages.nav[3]}</a>
       </nav>
-      <div className="header-actions">
+      <div className={styles.headerActions}>
         <LanguageSwitcher locale={locale} labels={messages.header} />
         <a
-          className="btn outline header-contact"
+          className={styles.btn + " " + styles.outline + " " + styles.headerContact}
           href={contactUrl}
           target="_blank"
           rel="noopener noreferrer"
