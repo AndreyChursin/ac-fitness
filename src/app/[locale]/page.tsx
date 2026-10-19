@@ -1,4 +1,3 @@
-import styles from "../../styles/Site.module.css";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { isLocale } from "@/i18n/config";
@@ -12,31 +11,31 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
   if (!isLocale(locale)) notFound();
   const lang = await getDictionary(locale);
   return (
-    <div className={styles.wrap}>
+    <div className="wrap">
       <SiteHeader locale={locale} contactUrl={contactUrl} messages={lang} />
       <main id="top">
-        <div className={styles.hero}>
+        <div className="hero">
           <div>
-            <div className={styles.eyebrow}>{lang.eyebrow}</div>
-            <h1 className={styles.headingOne}>
+            <div className="eyebrow">{lang.eyebrow}</div>
+            <h1>
               {lang.hero[0]}
               <br />
               {lang.hero[1]}
               <br />
               <em>{lang.hero[2]}</em>
             </h1>
-            <p className={styles.lead}>{lang.lead}</p>
-            <div className={styles.actions}>
-              <a className={styles.btn} href="#services">
+            <p className="lead">{lang.lead}</p>
+            <div className="actions">
+              <a className="btn" href="#services">
                 {lang.actions[0]}
               </a>
-              <a className={styles.btn + " " + styles.outline} href="#about">
+              <a className="btn outline" href="#about">
                 {lang.actions[1]}
               </a>
             </div>
           </div>
-          <div className={styles.heroArt} role="img" aria-label={lang.art.label}>
-            <div className={styles.artLabel}>
+          <div className="hero-art" role="img" aria-label={lang.art.label}>
+            <div className="art-label">
               {lang.art.lines[0]}
               <br />
               <span>{lang.art.lines[1]}</span>
@@ -45,37 +44,37 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
             </div>
           </div>
         </div>
-        <section className={styles.section} id="approach">
-          <div className={styles.eyebrow}>{lang.approach.eyebrow}</div>
-          <h2 className={styles.headingTwo}>
+        <section id="approach">
+          <div className="eyebrow">{lang.approach.eyebrow}</div>
+          <h2>
             {lang.approach.title[0]}
             <br />
             {lang.approach.title[1]}
           </h2>
-          <p className={styles.sub}>{lang.approach.sub}</p>
-          <div className={styles.grid}>
+          <p className="sub">{lang.approach.sub}</p>
+          <div className="grid">
             {lang.approach.cards.map(([title, body], i) => (
-              <article className={styles.card} key={title}>
-                <div className={styles.number}>0{i + 1}</div>
+              <article className="card" key={title}>
+                <div className="number">0{i + 1}</div>
                 <h3>{title}</h3>
                 <p>{body}</p>
               </article>
             ))}
           </div>
         </section>
-        <section className={styles.section} id="services">
-          <div className={styles.eyebrow}>{lang.services.eyebrow}</div>
-          <h2 className={styles.headingTwo}>{lang.services.title}</h2>
-          <p className={styles.sub}>{lang.services.sub}</p>
-          <div className={styles.grid}>
+        <section id="services">
+          <div className="eyebrow">{lang.services.eyebrow}</div>
+          <h2>{lang.services.title}</h2>
+          <p className="sub">{lang.services.sub}</p>
+          <div className="grid">
             {lang.services.cards.map((plan, i) => (
               <article
                 key={plan.name}
-                className={`${styles.card}${plans[i].featured ? ` ${styles.featured}` : ""}`}
+                className={`card${plans[i].featured ? " featured" : ""}`}
               >
-                <div className={styles.number}>{plan.tag}</div>
+                <div className="number">{plan.tag}</div>
                 <h3>{plan.name}</h3>
-                <div className={styles.price}>
+                <div className="price">
                   {formatPrice(plans[i].price, locale)}{" "}
                   <small>{plan.unit}</small>
                 </div>
@@ -85,7 +84,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
                   ))}
                 </ul>
                 <a
-                  className={`${styles.btn}${plans[i].featured ? "" : ` ${styles.outline}`}`}
+                  className={`btn${plans[i].featured ? "" : " outline"}`}
                   href="#contact"
                 >
                   {plan.cta}
@@ -93,25 +92,25 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
               </article>
             ))}
           </div>
-          <p className={styles.note}>{lang.services.note}</p>
+          <p className="note">{lang.services.note}</p>
         </section>
-        <section className={styles.section} id="about">
-          <div className={styles.about}>
+        <section id="about">
+          <div className="about">
             <div>
-              <div className={styles.eyebrow}>{lang.about.eyebrow}</div>
-              <h2 className={styles.headingTwo}>{lang.about.title}</h2>
+              <div className="eyebrow">{lang.about.eyebrow}</div>
+              <h2>{lang.about.title}</h2>
               {lang.about.paragraphs.map((p) => (
-                <p className={styles.sub} key={p}>
+                <p className="sub" key={p}>
                   {p}
                 </p>
               ))}
             </div>
-            <div className={styles.quote}>{lang.about.quote}</div>
+            <div className="quote">{lang.about.quote}</div>
           </div>
         </section>
-        <section className={`${styles.section} ${styles.faq}`} id="faq">
-          <div className={styles.eyebrow}>{lang.faq.eyebrow}</div>
-          <h2 className={styles.headingTwo}>{lang.faq.title}</h2>
+        <section className="faq" id="faq">
+          <div className="eyebrow">{lang.faq.eyebrow}</div>
+          <h2>{lang.faq.title}</h2>
           {lang.faq.items.map(([q, a]) => (
             <details key={q}>
               <summary>{q}</summary>
@@ -119,14 +118,14 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
             </details>
           ))}
         </section>
-        <section className={styles.section} id="contact">
-          <div className={styles.cta}>
-            <div className={styles.eyebrow} style={{ color: "#39522b" }}>
+        <section id="contact">
+          <div className="cta">
+            <div className="eyebrow" style={{ color: "#39522b" }}>
               {lang.contact.eyebrow}
             </div>
-            <h2 className={styles.headingTwo}>{lang.contact.title}</h2>
+            <h2>{lang.contact.title}</h2>
             <p>{lang.contact.body}</p>
-            <a className={styles.btn} href={contactUrl}>
+            <a className="btn" href={contactUrl}>
               {lang.contact.cta}
             </a>
             {!process.env.NEXT_PUBLIC_CONTACT_URL && (
@@ -137,7 +136,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
           </div>
         </section>
       </main>
-      <footer className={styles.footer}>
+      <footer>
         <span>© 2026 Train With Andrey</span>
         <span>{lang.footer}</span>
       </footer>
